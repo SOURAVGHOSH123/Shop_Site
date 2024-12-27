@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Update Product</title>
+</head>
+
+<body>
+   <h1>Edit the Product</h1>
+   <form action="/product/<%=product._id %>?_method=PUT" method="post">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" value="<%= product.name %>"><br><br>
+      <label for="price">Price</label>
+      <input type="number" id="price" name="price" value="<%= product.price %>"><br><br>
+      <label for="category">Category</label>
+      <select name="category" id="category">
+         <% for (const category of categories){ %>
+            <option value="<%=category %>" <%=product.category===category ? 'selected' :'' %>>
+               <%=category %>
+            </option>
+            <% } %>
+
+               <!-- <option value="fruit" <%=product.category==='fruit' ? 'selected' :'' %>>fruit</option>
+         <option value="vagetable" <%=product.category==='vagetable' ? 'selected' :'' %>>vagetable</option>
+         <option value="dairy" <%=product.category==='dairy' ? 'selected' :'' %>>dairy</option>
+         <option value="flower" <%=product.category==='flower' ? 'selected' :'' %>>flower</option>
+         <option value="gift" <%=product.category==='gift' ? 'selected' :'' %>>gift</option> -->
+      </select><br><br>
+      <input type="submit">
+   </form><br>
+   <a href="/product">Show Products</a>
+</body>
+
+</html>
